@@ -1,6 +1,6 @@
 /*!
- * perfect-scrollbar v1.5.2
- * Copyright 2021 Hyunje Jun, MDBootstrap and Contributors
+ * perfect-scrollbar-dvs v1.5.3
+ * Copyright 2021 Digital Vault Studio
  * Licensed under MIT
  */
 
@@ -515,25 +515,27 @@
 
   function dragThumb(i) {
     bindMouseScrollHandler(i, [
-      'containerWidth',
-      'contentWidth',
-      'pageX',
-      'railXWidth',
-      'scrollbarX',
-      'scrollbarXWidth',
-      'scrollLeft',
-      'x',
-      'scrollbarXRail' ]);
+      "containerWidth",
+      "contentWidth",
+      "pageX",
+      "railXWidth",
+      "scrollbarX",
+      "scrollbarXWidth",
+      "scrollLeft",
+      "x",
+      "scrollbarXRail"
+    ]);
     bindMouseScrollHandler(i, [
-      'containerHeight',
-      'contentHeight',
-      'pageY',
-      'railYHeight',
-      'scrollbarY',
-      'scrollbarYHeight',
-      'scrollTop',
-      'y',
-      'scrollbarYRail' ]);
+      "containerHeight",
+      "contentHeight",
+      "pageY",
+      "railYHeight",
+      "scrollbarY",
+      "scrollbarYHeight",
+      "scrollTop",
+      "y",
+      "scrollbarYRail"
+    ]);
   }
 
   function bindMouseScrollHandler(
@@ -572,7 +574,11 @@
     function mouseUpHandler() {
       removeScrollingClass(i, y);
       i[scrollbarYRail].classList.remove(cls.state.clicking);
-      i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+      i.event.unbind(i.ownerDocument, "mousemove", mouseMoveHandler);
+    }
+
+    function unbindTouch() {
+      i.event.unbind(i.ownerDocument, "touchmove", mouseMoveHandler);
     }
 
     function bindMoves(e, touchMode) {
@@ -584,12 +590,14 @@
       scrollBy =
         (i[contentHeight] - i[containerHeight]) /
         (i[railYHeight] - i[scrollbarYHeight]);
+
       if (!touchMode) {
-        i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
-        i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+        i.event.bind(i.ownerDocument, "mousemove", mouseMoveHandler);
+        i.event.once(i.ownerDocument, "mouseup", mouseUpHandler);
         e.preventDefault();
       } else {
-        i.event.bind(i.ownerDocument, 'touchmove', mouseMoveHandler);
+        i.event.bind(i.ownerDocument, "touchmove", mouseMoveHandler);
+        i.event.once(i.ownerDocument, "touchend", unbindTouch);
       }
 
       i[scrollbarYRail].classList.add(cls.state.clicking);
@@ -597,10 +605,10 @@
       e.stopPropagation();
     }
 
-    i.event.bind(i[scrollbarY], 'mousedown', function (e) {
+    i.event.bind(i[scrollbarY], "mousedown", function (e) {
       bindMoves(e);
     });
-    i.event.bind(i[scrollbarY], 'touchstart', function (e) {
+    i.event.bind(i[scrollbarY], "touchstart", function (e) {
       bindMoves(e, true);
     });
   }

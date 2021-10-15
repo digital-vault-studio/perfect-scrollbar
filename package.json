@@ -1,8 +1,8 @@
 {
-  "name": "perfect-scrollbar",
-  "version": "1.5.2",
+  "name": "perfect-scrollbar-dvs",
+  "version": "1.5.3",
   "description": "Minimalistic but perfect custom scrollbar plugin",
-  "author": "Hyunje Jun <me@noraesae.net>",
+  "author": "Digital Vault Studio",
   "keywords": [
     "frontend",
     "scroll",
@@ -10,10 +10,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mdbootstrap/perfect-scrollbar"
+    "url": "https://github.com/digital-vault-studio/perfect-scrollbar"
   },
   "bugs": {
-    "url": "https://github.com/mdbootstrap/perfect-scrollbar/issues"
+    "url": "https://github.com/digital-vault-studio/perfect-scrollbar/issues"
   },
   "jspm": {
     "main": "dist/perfect-scrollbar.common.js",
